@@ -1,0 +1,55 @@
+Mihalceanu Cristian-Ionut
+321CC
+
+Limbaj C
+Timp: 4 zile (aprox. 16 ore)
+
+Fisierele buffer.c helpers.c sunt cele din laboratorul 10
+
+In request.c si .h am modificat functiile de get si post
+pentru a le adapta cerintelor. In get si post am adaugat si tokenul
+pentru a-l transmite si pe el odata cu mesajele, asta pentru a confirma
+accesul la library. 
+
+In client.c am mentionat host-ul, si am creat variabile ajutatoare
+In while(1) incepe executia, asteptand comenzile de la stdin
+Si verifica daca este una din comenzile recunoscute
+
+La fiecare iteratie in while deschidem si la final inchidem conexiunea cu socketul
+
+Pt "register" introdusa de la stdin, cerem userului username si parola
+si la url ul specificat in enunt facem post request.
+Salvam usernameul si parola ca JSON object, iar mai apoi pt simplitate
+convertim in string cu acel format pentru a trimite ca parametru
+
+Tratam erorile daca parametrii mentionati ai noului cont coincid cu 
+un cont deja existent
+
+Cu strtok afisam mesajul de succes sau esec si cauza
+
+Asemanator comportament si la login, doar ca aici daca nu s-a putut
+efectua cu succes actiunea, nu avem ce cookie de login sa analizam si 
+tratan si cazul acesta de exceptie
+
+Cu "second" de la strtok obtinem ultima linie din response, adica cookie ul
+
+In entry_library verificam sa se fi efectuat in prealabil autentificarea si obtine 
+tokenul de acces in biblioteca
+
+La get_books, daca s-a efectuat cu succes, afisam frumos cartile cu id-urile
+corespunzatoare in format JSON
+
+In add_book cerem userului sa introduca datele cartii si cream JSON ul corespunzator
+obiectului. Facem post request si cartea este adaugata in library
+
+La get_book, id ul este adugat in url ul la care facem request
+Daca id-ul nu este valid, verificam in pealabil si tratam exceptia,
+alfel afisam cartea
+
+delete_book foloseste un request nou definit, cel de DELETE, structura acelei functii din
+request.c este asemanatoare celei de GET
+
+Logout face requestul corespunzator si sterge coockie ul de login si tokenul de acces
+
+Exit inchide conexiunea cu socketul si incheie aplicatia
+
